@@ -1,5 +1,5 @@
 body{
-	background-color:#51DFFF;
+	background-color:#fff;
 	font-family: 'Magra', sans-serif;
 }
 
@@ -49,7 +49,7 @@ h1{
 
 }
 
-.box > img {
+img {
 	border: 0px;
 	height: 150px;
 	width: 150px;
