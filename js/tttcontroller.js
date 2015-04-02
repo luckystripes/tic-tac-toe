@@ -16,57 +16,85 @@ function tttcontroller ($firebaseArray){
 
 	var moves = 0;
 
-	self.box=[
-		{sq:false, number:0},
-		{sq:false, number:1},
-		{sq:false, number:2},
-		{sq:false, number:3},
-		{sq:false, number:4},
-		{sq:false, number:5},
-		{sq:false, number:6},
-		{sq:false, number:7},
-		{sq:false, number:8},
+	self.board=[
+		{value:""},
+		{value:""},
+		{value:""},
+		{value:""},
+		{value:""},
+		{value:""},
+		{value:""},
+		{value:""},
+		{value:""}
 	]
-
-
-	// self.wins = [[0, 1, 2], 
-	// 			 [3, 4, 5], 
-	// 			 [6, 7, 8], 
-	// 			 [0, 3, 6], 
- //                 [1, 4, 7], 
- //                 [2, 5, 8], 
- //                 [0, 4, 8], 
- //                 [2, 4, 6]]
-
 
 /////////////////////////////////////////FUNCTIONS///////////////////////////
 
 // alternates x and o moves
 	function playermoves ($index) {
+		 var ref = new Firebase ("tic-tac-toe-what.firebaseIO.com/board")
+		 var move = $firebaseObject(ref);
+	
 		if (currentPlayer === x){
-			self.box[$index].image = "img/apple.png";
+			self.board[$index].image = "img/apple.png";
+			self.board[$index].value = "ios";
+			winner(currentPlayer);
 			currentPlayer = o;
+			console.log("inside x", currentPlayer);
+		
 		} else {
-			self.box[$index].image = "img/android.png";
+			self.board[$index].image = "img/android.png";
+			self.board[$index].value = "android";
+			winner(currentPlayer);
 			currentPlayer = x;
+			console.log("inside o");
 		} 
+
+		america.$save();
+		
+	
 	// NEED TO PREVENT PLAYER FROM CHANGING MOVE	
 	}
 
 
-// get winner who has 3 in a row 
+// get winner who has any 3 in a row 
 	function winner (currentPlayer){
-		if ( (self.box[0] && self.box[1] && self.box[2]) || (self.box[3] && self.box[4] && self.box[5]) ||
-			 (self.box[6] && self.box[7] && self.box[8]) || (self.box[0] && self.box[3] && self.box[6]) ||
-			 (self.box[1] && self.box[4] && self.box[7]) || (self.box[2] && self.box[5] && self.box[8]) ||
-			 (self.box[0] && self.box[4] && self.box[8]) || (self.box[2] && self.box[4] && self.box[6]) ){
+		console.log("winner function called");
+		console.log("asdasdf");
+			// horizontal wins ///////////////IOS//////////////////////////
+		if ( (self.board[0].value ==="ios") && (self.board[1].value ==="ios") && (self.board[2].value ==="ios")|| 
+			 (self.board[3].value ==="ios") && (self.board[4].value ==="ios") && (self.board[5].value ==="ios")||
+			 (self.board[6].value ==="ios") && (self.board[7].value ==="ios") && (self.board[8].value ==="ios")|| 
+			 // vertical wins
+			 (self.board[0].value ==="ios") && (self.board[3].value ==="ios") && (self.board[6].value ==="ios")||
+			 (self.board[1].value ==="ios") && (self.board[4].value ==="ios") && (self.board[7].value ==="ios")|| 
+			 (self.board[2].value ==="ios") && (self.board[5].value ==="ios") && (self.board[8].value ==="ios")||
+			 // diaganol wins
+			 (self.board[0].value ==="ios") && (self.board[4].value ==="ios") && (self.board[8].value ==="ios")|| 
+			 (self.board[2].value ==="ios") && (self.board[4].value ==="ios") && (self.board[6].value ==="ios") ){
 
 			alert(currentPlayer + "wins");
-			console.log(currentPlayer + "wins");
-		} 
+			
+			// horizontal wins /////////ANDROID////////////////////////////
+		} else if ( (self.board[0].value === "android") && (self.board[1].value ==="android") && (self.board[2].value==="android")|| 
+					(self.board[3].value === "android") && (self.board[4].value ==="android") && (self.board[5].value==="android")||
+					(self.board[6].value === "android") && (self.board[7].value ==="android") && (self.board[8].value==="android")|| 
+					 // vertical wins
+					(self.board[0].value === "android") && (self.board[3].value ==="android") && (self.board[6].value==="android")||
+					(self.board[1].value === "android") && (self.board[4].value ==="android") && (self.board[7].value==="android")|| 
+					(self.board[2].value === "android") && (self.board[5].value ==="android") && (self.board[8].value==="android")||
+					 // diaganol wins
+					(self.board[0].value === "android") && (self.board[4].value ==="android") && (self.board[8].value==="android")|| 
+					(self.board[2].value === "android") && (self.board[4].value ==="android") && (self.board[6].value==="android")){
+
+			alert(currentPlayer + "wins");
+			
+		}	else{
+			null;
+		}
 
 
-
+	}
 	}
 
 
@@ -93,4 +121,3 @@ function tttcontroller ($firebaseArray){
 
 
 
-}
