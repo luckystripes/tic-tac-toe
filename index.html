@@ -9,10 +9,10 @@
 
 	<section id="grey">
 
-	<section class="stage">
-		<h1>ios vs android</h1>
+	<section class="stage"> 
+		<!-- <h1>ios vs android</h1> -->
 	 
-		<section class="box" ng-repeat="t in tictactoe.board" ng-mousedown="tictactoe.playermoves($index)">
+		<section class="box" ng-repeat="t in tictactoe.game.board" ng-mousedown="tictactoe.playermoves($index)" ng-mouseup="tictactoe.winner(currentPlayer)">
 			<img ng-src={{t.image}}>
 		</section>
 <!-- end of box -->

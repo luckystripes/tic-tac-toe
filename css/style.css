@@ -1,6 +1,7 @@
 body{
-	background-color:#fff;
 	font-family: 'Magra', sans-serif;
+	background-color: #ed363b;
+	cursor: url("../img/smoke.png"), auto;
 }
 
 /*#grey{
@@ -20,20 +21,21 @@ body{
 	margin: 0 auto 0 auto;
 }
 
-h1{
+/*h1{
 	margin-top: 50px;
 	text-align: center;
 	color: #4F5157;
 	font-size: 40px;
 
-}
+}*/
 
 
 .stage{
 	display:block;
 	width: 500px;
 	height: 500px;
-	margin: 50px auto 0 auto;
+	margin: 70px auto 0 auto;
+	/*background-image: url("img/giphy.gif");*/
 
 }
 
@@ -45,12 +47,16 @@ h1{
 	/*vertical-align: top;*/
 	display: inline-block;
 	margin: 3px;
-	background-color: #CCF6FF;
+	background-color: #2e8c2b;
+	border: 5px solid #fecd06;
+	border-radius: 8px;
 
 }
 
 img {
-	border: 0px;
-	height: 150px;
-	width: 150px;
+	display: inline-block;
+	text-align: center;
+	margin: 10px;
+	height: 130px;
+	width: 130px;
 	
