@@ -6,16 +6,22 @@ angular
 
 function tttcontroller ($firebaseArray){
 	var self = this;
-	self.playermoves = playermoves;
-	self.winner = winner;
 	
+	// players
 	var x = "ios";
 	var o = "android";
 	var currentPlayer = x;
+	var blank = "";
+	
+	// functions
+	self.playermoves = playermoves;
+	self.winner = winner;
+	self.tied = tied;
 
 
 	var moves = 0;
 
+	// board array
 	self.board=[
 		{value:""},
 		{value:""},
@@ -32,29 +38,32 @@ function tttcontroller ($firebaseArray){
 
 // alternates x and o moves
 	function playermoves ($index) {
-		 var ref = new Firebase ("tic-tac-toe-what.firebaseIO.com/board")
-		 var move = $firebaseObject(ref);
-	
+			 // var ref = new Firebase ("tic-tac-toe-what.firebaseIO.com/board")
+			 // var move = $firebaseObject(ref)
+		
+		
 		if (currentPlayer === x){
 			self.board[$index].image = "img/apple.png";
-			self.board[$index].value = "ios";
+			self.board[$index].value = "ios";	
 			winner(currentPlayer);
+			moves++;
 			currentPlayer = o;
-			console.log("inside x", currentPlayer);
+			tied(moves);	
 		
-		} else {
+		} 	else {
 			self.board[$index].image = "img/android.png";
 			self.board[$index].value = "android";
+			currentPlayer = o;			
 			winner(currentPlayer);
+			moves++;
 			currentPlayer = x;
-			console.log("inside o");
+			tied(moves);
+	
 		} 
 
-		america.$save();
-		
-	
-	// NEED TO PREVENT PLAYER FROM CHANGING MOVE	
+		// NEED TO PREVENT PLAYER FROM CHANGING MOVE	
 	}
+// end playermoves///////////////////////////////////////////////
 
 
 // get winner who has any 3 in a row 
@@ -94,8 +103,23 @@ function tttcontroller ($firebaseArray){
 		}
 
 
+		}
+// end winner//////////////////////////////////////////////////
+
+// tied
+	function tied (moves){
+		if (moves===9) {
+
+			alert("tied");
+
+		};
 	}
-	}
+// end tied/////////////////////////////////////////////////////
+
+
+
+
+}
 
 
 
