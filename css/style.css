@@ -1,33 +1,25 @@
 body{
-	font-family: 'Magra', sans-serif;
+	font-family: 'Luckiest Guy', bold;
 	background-color: #ed363b;
 	cursor: url("../img/smoke.png"), auto;
 }
 
-/*#grey{
-	position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 50%;
-    height: 100%;
-    background-color: #4F5157; 
-}*/
 
-
+/*
 .container{
 	display:block;
 	width: 1000px;
 	height:1000px;
 	margin: 0 auto 0 auto;
-}
+}*/
 
-/*h1{
+h1{
 	margin-top: 50px;
 	text-align: center;
-	color: #4F5157;
 	font-size: 40px;
 
-}*/
+
+}
 
 
 .stage{
@@ -59,4 +51,35 @@ img {
 	margin: 10px;
 	height: 130px;
 	width: 130px;
-	
+}
+
+
+
+#splash{
+	width: 500px;
+	height: 302px;
+}
+
+form{
+	width: 210px;
+	height: 55px;
+	margin: 10px auto 0 auto;
+	text-align: center;
+
+}
+
+#start {
+	width: 200px;
+	height: 50px;
+	color: black;
+	font-size: 30px;
+	background-color:#fecd06;
+	color: #2e8c2b;
+	border: 3px solid #2e8c2b;
+	cursor: url("../img/smoke.png"), auto;
+}
+
+#start:hover{
+	cursor: url("../img/smoke.png"), auto;
+	background-color: #fff;
+}
