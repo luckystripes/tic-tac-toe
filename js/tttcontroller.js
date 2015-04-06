@@ -10,15 +10,18 @@ function tttcontroller ($firebaseObject){
 	// players
 	var x = "cheech";
 	var o = "chong";
+	self.splash=true;
 	// var currentPlayer = x;
-	var moves = 0;
+	
+	
+
 	
 	// functions
 	self.game = syncFiyah();
 	self.playermoves = playermoves;
 	self.winner = winner;
 	self.tied = tied;
-	
+	self.splashTwo = splashTwo;
 
 
 	// board array
@@ -46,6 +49,8 @@ function tttcontroller ($firebaseObject){
 			gameObj.o = "chong";
 			gameObj.currentPlayer = x;
 			gameObj.moves = 0;
+			gameObj.cheechWins = false;
+			gameObj.chongWins = false;
 
 			gameObj.board=[
 					{value:"", image:"img/blank.gif"},
@@ -107,7 +112,8 @@ function tttcontroller ($firebaseObject){
 			 (self.game.board[0].value ==="cheech") && (self.game.board[4].value ==="cheech") && (self.game.board[8].value ==="cheech")|| 
 			 (self.game.board[2].value ==="cheech") && (self.game.board[4].value ==="cheech") && (self.game.board[6].value ==="cheech") ){
 
-			alert("cheech gets the hit");
+			// alert("cheech gets the hit");
+			self.game.cheechWins=true;
 			
 			// horizontal wins /////////chong////////////////////////////
 		} else if ( (self.game.board[0].value === "chong") && (self.game.board[1].value ==="chong") && (self.game.board[2].value==="chong")|| 
@@ -121,7 +127,8 @@ function tttcontroller ($firebaseObject){
 					(self.game.board[0].value === "chong") && (self.game.board[4].value ==="chong") && (self.game.board[8].value==="chong")|| 
 					(self.game.board[2].value === "chong") && (self.game.board[4].value ==="chong") && (self.game.board[6].value==="chong")){
 
-			alert("chong gets the hit");
+			// alert("chong gets the hit");
+			self.game.chongWins=true;
 			
 		}	else{
 			null;
@@ -140,7 +147,9 @@ function tttcontroller ($firebaseObject){
 	}// end tied/////////////////////////////////////////////////////
 
 
-
+function splashTwo(){
+	splash = false;
+}
 
 }
 

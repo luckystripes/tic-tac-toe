@@ -7,23 +7,44 @@
 </head>
 <body ng-controller="tttcontroller as tictactoe">
 
-	<section id="grey">
 
 	<section class="stage"> 
-		<!-- <h1>ios vs android</h1> -->
+	
+	<section ng-show="tictactoe.splash">
+	<h1> Whos hit is it? </h1>
+		<img id="splash" src="img/splash.png">
+			<form>
+			
+		    	<button id="start" type="submit" ng-click="tictactoe.splash=false"> start </button>
+		  
+			</form>
+	</section>
+
+<!-- main tic tac toe board -->
+	<section ng-hide="tictactoe.splash">
 	 
 		<section class="box" ng-repeat="t in tictactoe.game.board" ng-mousedown="tictactoe.playermoves($index)" ng-mouseup="tictactoe.winner(currentPlayer)">
 			<img ng-src={{t.image}}>
 		</section>
+<!-- end of board -->
 
-<!-- end of box -->
-	<section ng-show=></section>
+		<section ng-show="tictactoe.game.cheechWins">
+			<img id="cheech_wins" ng-src="img/cheech_wins.gif">
+			<h2 id="cheech_message">Cheech gets the hit!</h2>
+			<img id="smoke" ng-src="img/smoke.gif">
+		</section>
 
+		<section ng-show="tictactoe.game.chongWins">
+			<img id="chong_wins" ng-src="img/chong_wins.gif">
+			<h2 id="chong_message">Chong gets the hit!</h2>
+			<img id="smoke" ng-src="img/smoke.gif">
+		</section>
+	
 	
 	</section>
 <!-- end of stage -->
 	</section>
-<!-- end of grey -->
+
 
 
 
