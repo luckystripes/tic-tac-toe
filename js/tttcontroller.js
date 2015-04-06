@@ -21,7 +21,6 @@ function tttcontroller ($firebaseObject){
 	self.playermoves = playermoves;
 	self.winner = winner;
 	self.tied = tied;
-	self.splashTwo = splashTwo;
 
 
 	// board array
@@ -41,7 +40,7 @@ function tttcontroller ($firebaseObject){
 
 // sync game with firebase
 	function syncFiyah (){
-		var ref = new Firebase("tic-tac-toe-what.firebaseIO.com/board");
+		var ref = new Firebase("tic-tac-toe-what.firebaseIO.com");
 		var gameObj = $firebaseObject(ref);
 
 		gameObj.$loaded(function(){
@@ -51,6 +50,7 @@ function tttcontroller ($firebaseObject){
 			gameObj.moves = 0;
 			gameObj.cheechWins = false;
 			gameObj.chongWins = false;
+			gameObj.splash=true;
 
 			gameObj.board=[
 					{value:"", image:"img/blank.gif"},
@@ -79,7 +79,7 @@ function tttcontroller ($firebaseObject){
 			// winner(self.game.currentPlayer);
 			self.game.moves ++;
 			self.game.currentPlayer = o;
-			tied(moves);
+			self.tied();
 			self.game.$save();	
 		
 		} 	else {
@@ -89,7 +89,7 @@ function tttcontroller ($firebaseObject){
 			// winner(self.game.currentPlayer);
 			self.game.moves++;
 			self.game.currentPlayer = x;
-			tied(moves);
+			self.tied();
 			self.game.$save();
 	
 		} 
@@ -146,10 +146,6 @@ function tttcontroller ($firebaseObject){
 		};
 	}// end tied/////////////////////////////////////////////////////
 
-
-function splashTwo(){
-	splash = false;
-}
 
 }
 
